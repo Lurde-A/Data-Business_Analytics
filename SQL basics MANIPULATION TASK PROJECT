@@ -24,3 +24,4 @@ INSERT INTO friends (id, name, birthday)
 VALUES (3, "Mėnulis Uolienius", "1992-03-30");
 
 // Adding the first value
+
