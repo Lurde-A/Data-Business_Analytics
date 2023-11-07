@@ -102,6 +102,8 @@ New Hampshire|42.8
 Vermont|43.1
 Maine|44.6
 
+// Which conggresional district has the highest populaton of people living below the poverty line? 
+
             sqlite> SELECT below_poverty_line, congressional_district
                ...> FROM congressional_districts
                ...> ORDER BY below_poverty_line ASC;
@@ -114,4 +116,30 @@ Maine|44.6
 247030|07
 285896|15
 
+// Which states havethe lowest amount of immigrants?
+            sqlite> SELECT state, foreign_born_population
+               ...> FROM states
+               ...> ORDER BY foreign_born_population ASC;
+72|
+30|21356
+56|21999
+46|27845
+...
+36|4530087
+48|4671295
+06|10688336
 
+OR          sqlite> SELECT name, foreign_born_population
+               ...> FROM states
+               ...> ORDER BY foreign_born_population ASC;
+
+Puerto Rico|
+Montana|21356
+Wyoming|21999
+South Dakota|27845
+...
+New York|4530087
+Texas|4671295
+California|10688336
+
+// Which place has the highes Asian population?
