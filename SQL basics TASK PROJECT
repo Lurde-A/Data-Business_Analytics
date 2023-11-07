@@ -1,11 +1,26 @@
+// Creating table:
+
 CREATE TABLE friends (
   id INTEGER,
   name TEXT,
   birthday DATE
 );
 
+// Adding the 1st row value:
+
 INSERT INTO friends (id, name, birthday)
 VALUES (1, "Ororo Munroe", "1940-05-30");
 
+// Checking if everything's okay:
+
 SELECT * FROM friends;
 
+// Adding 2 more rows with values:
+
+INSERT INTO friends (id, name, birthday)
+VALUES (2, "Braškė Slyvaitė", "1994-06-30");
+
+INSERT INTO friends (id, name, birthday)
+VALUES (3, "Mėnulis Uolienius", "1992-03-30");
+
+// Adding the first value
