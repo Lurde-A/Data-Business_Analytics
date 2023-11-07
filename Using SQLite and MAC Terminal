@@ -1,0 +1,117 @@
+            Lurdes-MacBook-Air-2:CodeCademy Lurde$ cd /Users/Lurde/Desktop/.../.../MANIPULATION
+
+            Lurdes-MacBook-Air-2:MANIPULATION Lurde$ pwd
+/Users/Lurde/Desktop/.../.../MANIPULATION
+
+            Lurdes-MacBook-Air-2:MANIPULATION Lurde$ sqlite3 acs-1-year-2015.sqlite
+SQLite version 3.39.5 2022-10-14 20:58:05
+Enter ".help" for usage hints.
+
+            sqlite> .schema
+CREATE TABLE states (
+    year INTEGER , 
+    name TEXT , 
+    geo_id TEXT , 
+    total_population INTEGER , 
+    white INTEGER , 
+    black INTEGER , 
+    hispanic INTEGER , 
+    asian INTEGER , 
+    american_indian INTEGER , 
+    pacific_islander INTEGER , 
+    other_race INTEGER , 
+    median_age FLOAT , 
+    total_households INTEGER , 
+    owner_occupied_homes_median_value INTEGER , 
+    per_capita_income INTEGER , 
+    median_household_income INTEGER , 
+    below_poverty_line INTEGER, 
+    foreign_born_population INTEGER, 
+    state TEXT 
+);
+CREATE TABLE congressional_districts (
+    year INTEGER , 
+    name TEXT , 
+    geo_id TEXT , 
+    total_population INTEGER , 
+    white INTEGER , 
+    black INTEGER , 
+    hispanic INTEGER , 
+    asian INTEGER , 
+    american_indian INTEGER , 
+    pacific_islander INTEGER , 
+    other_race INTEGER , 
+    median_age FLOAT , 
+    total_households INTEGER , 
+    owner_occupied_homes_median_value INTEGER , 
+    per_capita_income INTEGER , 
+    median_household_income INTEGER , 
+    below_poverty_line INTEGER, 
+    foreign_born_population INTEGER, 
+    state TEXT,
+    congressional_district TEXT
+);
+CREATE TABLE places (
+    year INTEGER , 
+    name TEXT , 
+    geo_id TEXT , 
+    total_population INTEGER , 
+    white INTEGER , 
+    black INTEGER , 
+    hispanic INTEGER , 
+    asian INTEGER , 
+    american_indian INTEGER , 
+    pacific_islander INTEGER , 
+    other_race INTEGER , 
+    median_age FLOAT , 
+    total_households INTEGER , 
+    owner_occupied_homes_median_value INTEGER , 
+    per_capita_income INTEGER , 
+    median_household_income INTEGER , 
+    below_poverty_line INTEGER, 
+    foreign_born_population INTEGER, 
+    state TEXT,
+    place TEXT
+);
+CREATE INDEX "state_on_states" ON states(state);
+CREATE INDEX "state_cd_on_cdistricts" ON congressional_districts(state, congressional_district);
+CREATE INDEX "state_on_places" ON places(state);
+CREATE INDEX "name_on_states" ON states(name);
+CREATE INDEX "name_on_cdistricts" ON congressional_districts(name);
+CREATE INDEX "name_on_places" ON places(name);
+
+            sqlite> SELECT name, per_capita_income
+               ...> FROM states
+               ...> ORDER BY per_capita_income ASC;
+Puerto Rico|18626
+Mississippi|40593
+Arkansas|41995
+...
+Hawaii|73486
+District of Columbia|75628
+Maryland|75847
+
+            sqlite> SELECT name, median_age
+               ...> FROM states
+               ...> ORDER BY median_age ASC;
+Utah|30.6
+Alaska|33.3
+District of Columbia|33.8
+...
+New Hampshire|42.8
+Vermont|43.1
+Maine|44.6
+
+            sqlite> SELECT below_poverty_line, congressional_district
+               ...> FROM congressional_districts
+               ...> ORDER BY below_poverty_line ASC;
+|98
+33529|11
+35552|07
+37507|03
+...
+221505|16
+247030|07
+285896|15
+
+
