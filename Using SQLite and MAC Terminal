@@ -142,4 +142,13 @@ New York|4530087
 Texas|4671295
 California|10688336
 
-// Which place has the highes Asian population?
+// Which place has the higher Asian population: NYC or LA?
+
+            sqlite> SELECT name, asian
+               ...> FROM places
+               ...> WHERE name='Los Angeles city, California'
+               ...> OR name='New York city, New York';
+
+Los Angeles city, California|451761
+New York city, New York|1196134             //NYC has the higher asian population
+
