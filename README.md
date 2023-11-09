@@ -1,2 +1,3 @@
 # Data-Scientist - Analytics
-Portfolio of statistical knowledge, SQL, Python Pandas programming skills, and visualization techniques.
+Starting portfolio of statistical knowledge, SQL, Python Pandas programming skills, visualization techniques.
+To be updated... :) 
