@@ -1,0 +1,26 @@
+// What are the column names?
+SELECT * 
+FROM nomnom;
+
+Result:
+•	name
+•	neighborhood
+•	cuisine
+•	review
+•	price
+•	health
+
+// What are the distinct neighborhoods?
+SELECT DISTINCT neighborhood
+FROM nomnom;
+
+// What are the distinct cuisine types?
+SELECT DISTINCT cuisine
+FROM nomnom;
+
+// Suppose we would like some Chinese takeout. What are our options?
+SELECT name
+FROM nomnom
+WHERE cuisine='Chinese';
+
+// Return all the restaurants with reviews of 4 and above.
