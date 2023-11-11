@@ -35,3 +35,37 @@ FROM fake_apps;
 SELECT AVG(price)
 FROM fake_apps;
 
+// Let’s return the name column and a rounded price column.
+
+SELECT name, ROUND(price, 0)
+FROM fake_apps;
+
+// In the last exercise, we were able to get the average price of an app ($2.02365) using this query:
+SELECT AVG(price)
+FROM fake_apps;
+Now, let’s edit this query so that it rounds this result to 2 decimal places.
+
+SELECT ROUND(AVG(price),2)
+FROM fake_apps;
+
+// Our aggregate function is COUNT(). Arranged price into groups.
+
+SELECT price, COUNT(*) 
+FROM fake_apps
+GROUP BY price;
+
+// In the previous query, add a WHERE clause to count the total number of apps that have been downloaded more than 20,000 times, at each price.
+
+SELECT price, COUNT(*) 
+FROM fake_apps
+WHERE downloads >20000
+GROUP BY price;
+
+//Remove the previous query.Write a new query that calculates the total number of downloads for each category.
+Select category and SUM(downloads)
+
+SELECT category, SUM(downloads),{ COUNT(*) } <-- not necessary,just for the interest. 
+FROM fake_apps
+GROUP BY category;
+
+//
