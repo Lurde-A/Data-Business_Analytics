@@ -75,12 +75,24 @@ GROUP BY category;
                                                                                     GROUP BY II
 // Use column reference numbers instead of column names after GROUP BY.
 
-    INSTEAD OF                         WRITING
-- SELECT category,               - SELECT category.
-   price,                            price,
-   AVG(downloads)                    AVG(downloads)
-FROM fake_apps                   FROM fake_apps
-GROUP BY category, price;        GROUP BY 1, 2;
+    INSTEAD OF                                             WRITING
+- SELECT category,                                   - SELECT category.
+   price,                                                price,
+   AVG(downloads)                                        AVG(downloads)
+FROM fake_apps                                       FROM fake_apps
+GROUP BY category, price;                            GROUP BY 1, 2;
 
                                                                                       HAVING
-//
+// Write the query which returns the average downloads (rounded) and the number of apps – at each price point. Restrict the query to price points that have more than 10 apps.
+
+     SOLUTION                                        ADDITIONAL SOLUTION                                   
+- SELECT price,                                      - SELECT price, 
+   ROUND(AVG(downloads)),                                ROUND(AVG(downloads)),
+   COUNT(*)                                              COUNT(*)
+FROM fake_apps                                       FROM fake_apps
+GROUP BY price                                       GROUP BY price
+HAVING COUNT(*) > 10;                                HAVING COUNT(*) > 10;
+                                                     ORDER BY COUNT(*)
+                                                     LIMIT 2;                   !or it may be any other number of result rows limit!
+
+                                                                                      
