@@ -2,17 +2,18 @@ Using database of "fake_apps"
 
 SELECT *
 FROM fake_apps;
-
+                                                                                      COUNT
 // Let’s count how many apps are in the table
 
 SELECT COUNT(*) 
 FROM fake_apps;
-
+                                                                                       SUM
 // What is the total number of downloads for all of the apps combined?
 
 SELECT SUM(downloads)
 FROM fake_apps;
 
+                                                                                    MAX / MIN
 // What is the maximum / least number of times an app has been downloaded?
 
 SELECT MAX(downloads)
@@ -25,6 +26,7 @@ FROM fake_apps;
 SELECT MAX(price)
 FROM fake_apps;
 
+                                                                                     AVERAGE
 // Calculate the average number of downloads for all the apps in the table.
 
 SELECT AVG(downloads)
@@ -35,6 +37,7 @@ FROM fake_apps;
 SELECT AVG(price)
 FROM fake_apps;
 
+                                                                                      ROUND
 // Let’s return the name column and a rounded price column.
 
 SELECT name, ROUND(price, 0)
@@ -48,6 +51,7 @@ Now, let’s edit this query so that it rounds this result to 2 decimal places.
 SELECT ROUND(AVG(price),2)
 FROM fake_apps;
 
+                                                                                    GROUP BY I
 // Our aggregate function is COUNT(). Arranged price into groups.
 
 SELECT price, COUNT(*) 
@@ -68,4 +72,15 @@ SELECT category, SUM(downloads),{ COUNT(*) } <-- not necessary,just for the inte
 FROM fake_apps
 GROUP BY category;
 
+                                                                                    GROUP BY II
+// Use column reference numbers instead of column names after GROUP BY.
+
+    INSTEAD OF                         WRITING
+- SELECT category,               - SELECT category.
+   price,                            price,
+   AVG(downloads)                    AVG(downloads)
+FROM fake_apps                   FROM fake_apps
+GROUP BY category, price;        GROUP BY 1, 2;
+
+                                                                                      HAVING
 //
