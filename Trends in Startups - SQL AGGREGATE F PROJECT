@@ -97,3 +97,18 @@ HAVING COUNT(name) >3                                             HAVING COUNT(*
 ORDER BY category DESC;                                                                            ORDER BY 2 DESC;
 
 13. What is the average size of a startup in each location?
+
+//
+SELECT location, ROUND(AVG(employees),0)            OR            SELECT location, AVG(employees)            
+FROM startups                                                     FROM startups
+GROUP BY location                                                 GROUP BY location;
+ORDER BY 1 ASC;
+
+14. What is the average size of a startup in each location, with average sizes above 500?
+
+//
+SELECT location, ROUND(AVG(employees),0)            OR            SELECT location, AVG(employees) 
+FROM startups                                                     FROM startups
+GROUP BY location                                                 GROUP BY location
+HAVING ROUND(AVG(employees),0)>500                                HAVING AVG(employees)>500;
+ORDER BY 1 ASC;
