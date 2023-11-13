@@ -1,1 +1,17 @@
+1. Examine magazine company orders' tables by pasting the following code into the editor:
+//
+SELECT *
+FROM orders
+LIMIT 5;
 
+SELECT *
+FROM subscriptions
+LIMIT 5;
+
+SELECT * 
+FROM customers
+LIMIT 5;
+
+2. Just asking answer to match two separate tables and information within them. 
+
+3. 
