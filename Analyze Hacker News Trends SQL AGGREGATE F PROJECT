@@ -55,4 +55,76 @@ This data was kindly made publicly available under the MIT license (https://open
    The url of the video is:
    https://www.youtube.com/watch?v=dQw4w9WgXcQ
 
-5. How many times has each offending user posted this link?
+        5. How many times has each offending user posted this link?
+
+        //
+        SELECT user, COUNT(url)                                  OR                                  SELECT user, COUNT(*)
+        FROM hacker_news                                                                             FROM hacker_news
+        WHERE URL='https://www.youtube.com/watch?v=dQw4w9WgXcQ'                                      WHERE URL='https://www.youtube.com/watch?v=dQw4w9WgXcQ'
+        GROUP BY user                                                                                GROUP BY 1
+        ORDER BY COUNT(*) DESC;                                                                      ORDER BY 2;
+
+        Answer: user	          COUNT(url)
+                sonnynomnom	    2
+                scorpiosister	  1
+
+-  Hacker News stories are essentially links that take users to other websites.
+   Which of these sites feed Hacker News the most:
+   GitHub, Medium, or New York Times?
+   First, we want to categorize each story based on their source.
+   We can do this using a CASE statement:
+
+    SELECT CASE
+       WHEN url LIKE '%github.com%' THEN 'GitHub'
+       -- WHEN statement here
+       -- WHEN statement here
+       -- ELSE statement here
+      END AS 'Source'
+    FROM hacker_news;
+
+        6. Fill in the other WHEN statements and the ELSE statement.
+        
+        //
+        SELECT CASE
+         WHEN url LIKE '%github.com%' THEN 'GitHub'
+         WHEN url LIKE '%medium.com%' THEN 'Medium'
+         WHEN url LIKE '%nytimes.com%' THEN 'New York Times'
+         ELSE 'Other'
+         END AS 'Url Source'
+         FROM hacker_news;
+
+        Answer: The number of times stories are linked to:
+                •	GitHub - 23
+                •	Medium - 12
+                •	New York Times - 13
+
+-  Every submitter wants their story to get a high score so that the story makes it to the front page, but…
+   What’s the best time of the day to post a story on Hacker News?
+   Before we get started, let’s run this query and take a look at the timestamp column:
+
+    SELECT timestamp
+    FROM hacker_news
+    LIMIT 10;
+
+   Notice that the values are formatted like:
+   2018-05-08T12:30:00Z
+   If you ignore the T and Z, the format is:
+   YYYY-MM-DD HH:MM:SS
+
+        7. What’s the best time of the day to post a story on Hacker News?
+        
+        //
+        SELECT timestamp, score
+        FROM hacker_news
+        WHERE score IS NOT NULL
+        GROUP BY timestamp
+        ORDER BY score DESC;
+
+      Answer:       timestamp	         score
+                  2014-06-16T18:38:48Z	517
+                  2011-04-18T19:10:06Z	309
+                  2015-07-23T16:32:39Z	304
+                  2016-04-12T07:28:16Z	282
+                          ...           ...
+
+- 
