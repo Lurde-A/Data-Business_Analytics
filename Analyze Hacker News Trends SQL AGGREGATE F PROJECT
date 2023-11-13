@@ -115,9 +115,9 @@ This data was kindly made publicly available under the MIT license (https://open
         GROUP BY 1;
         
         Answer: The number of times stories are linked to:
-                        •	GitHub - 23
-                        •	Medium - 12
-                        •	New York Times - 13
+               •	GitHub - 23
+               •	Medium - 12
+               •	New York Times - 13
 
 -  Every submitter wants their story to get a high score so that the story makes it to the front page, but…
    What’s the best time of the day to post a story on Hacker News?
