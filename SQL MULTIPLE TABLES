@@ -89,5 +89,53 @@ FROM classes
 JOIN students
 ON classes.id = students.class_id;
 
-7.1 
+7.1 Suppose we wanted to know how many users were subscribed during each month of the year. For each month (1, 2, 3) we would 
+need to know if a user was subscribed. Follow the steps below to see how we can use a CROSS JOIN to solve this problem.
+Let’s start by counting the number of customers who were subscribed to the newspaper during March.
+Use COUNT(*) to count the number of rows and a WHERE clause to restrict to two conditions:
+start_month <= 3
+end_month >= 3
+//
+SELECT COUNT(*)
+FROM newspaper
+WHERE start_month <= 3 
+AND end_month >= 3;
+
+7.2 The previous query lets us investigate one month at a time. In order to check across all months, we’re going to need to use a cross join.
+Our database contains another table called months which contains the numbers between 1 and 12.
+Select all columns from the cross join of newspaper and months.
+//
+SELECT *
+FROM newspaper
+CROSS JOIN months;
+
+7.3 Create a third query where you add a WHERE statement to your cross join to restrict to two conditions:
+start_month <= month
+end_month >= month
+This will select all months where a user was subscribed.
+//
+SELECT *
+FROM newspaper
+CROSS JOIN months
+WHERE start_month <= month 
+AND end_month >= month;
+
+7.4 Create a final query where you aggregate over each month to count the number of subscribers.
+Fill in the blanks in the following query:
+SELECT month,
+COUNT(*)
+FROM ________
+CROSS JOIN ________
+WHERE ________ AND ________
+GROUP BY ________;
+//
+SELECT month,                             OR                             DELECT month,
+COUNT(*)                                                                 COUNT(*) AS 'Subscribers'
+FROM newspaper                                                           FROM newspaper
+CROSS JOIN months                                                        CROSS JOIN months 
+WHERE start_month <= month                                               WHERE start_month <= month
+AND end_month >= month                                                   AND end_month >= month
+GROUP BY month;                                                          GROUP BY month;
+
+8.1 
 
