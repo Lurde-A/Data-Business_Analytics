@@ -1,0 +1,82 @@
+1. 
+Let’s examine the three tables.
+
+SELECT * FROM trips;
+SELECT * FROM riders;
+SELECT * FROM cars;
+
+What are the column names?
+//
+Answer: 
+      trips table                                      riders table                                cars table
+
+      id - trip ID                                     id - user ID                                id - car ID
+      date - trip date                                 first - user first name                     model - car model
+      pickup - pickup time stamp                       last - user last name                       OS - operating system
+      dropoff - drop-off time stamp                    username - user handle                      status - active or maintenance
+      rider_id - user ID                               rating - user average rating                trips_completed - total trips completed
+      car_id - car ID                                  total_trips - total rides ridden
+      type - type of trip (X, POOL, XL)                referred - referred by (user ID)
+      cost - trip cost                                 cars table
+      riders table
+
+2.
+What’s the primary key of trips?              // trips id
+What’s the primary key of riders?             // riders id
+What’s the primary key of cars?               // cars id
+
+3.
+Try out a simple cross join between riders and cars.
+Is the result useful?
+
+//
+SELECT riders.first,              OR              SELECT *
+   riders.last,                                   FROM riders
+   cars.model                                     CROSS JOIN cars;
+FROM riders, cars;
+
+4.
+Suppose we want to create a Trip Log with the trips and its users.
+Find the columns to join between trips and riders and combine the two tables using a LEFT JOIN.
+Let trips be the left table.
+
+//
+SELECT trips.date,                    OR                      SELECT *
+   trips.pickup,                                              FROM trips
+   trips.dropoff,                                             LEFT JOIN riders
+   trips.type,                                                ON trips.rider_id = riders.id;
+   trips.cost,
+   riders.first, 
+   riders.last,
+   riders.username
+FROM trips
+LEFT JOIN riders 
+  ON trips.rider_id = riders.id;            
+
+5.
+Suppose we want to create a link between the trips and the cars used during those trips.
+Find the columns to join on and combine the trips and cars table using an INNER JOIN.
+
+//
+SELECT *                    OR                      SELECT *
+FROM trips                                          FROM trips
+JOIN cars                                           INNER JOIN cars
+  ON trips.car_id = cars.id;                          ON trips.car_id = cars.id;
+
+6.
+The new riders data are in! There are three new users this month.
+Stack the riders table on top of the new table named riders2.
+
+//
+SELECT *
+FROM riders
+UNION
+SELECT *
+FROM riders2;
+
+                                                      Bonus: Queries and Aggregates
+
+7.
+What is the average cost for a trip?
+
+
