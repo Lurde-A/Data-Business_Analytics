@@ -138,4 +138,58 @@ AND end_month >= month                                                   AND end
 GROUP BY month;                                                          GROUP BY month;
 
 8.1 
+Let’s return to our newspaper and online subscriptions. We’d like to create one big table with both sets of data.
+Use UNION to stack the newspaper table on top of the online table.
+//
+SELECT * 
+FROM newspaper 
+UNION 
+SELECT * 
+FROM online;
+
+9.1 Our marketing department might want to know a bit more about our customers. For instance, 
+they might want to know how many magazines each customer subscribes to. We can easily calculate this using our orders table:
+
+SELECT customer_id,
+   COUNT(subscription_id) AS 'subscriptions'
+FROM orders
+GROUP BY customer_id;
+
+Place the whole query below into a WITH statement, inside parentheses (), and give it name previous_query:
+SELECT customer_id,
+   COUNT(subscription_id) AS 'subscriptions'
+FROM orders
+GROUP BY customer_id
+//
+
+WITH previous_query AS (
+   SELECT customer_id,
+      COUNT(subscription_id) AS 'subscriptions'
+   FROM orders
+   GROUP BY customer_id
+)
+
+Join the temporary table previous_query with customers table and select the following columns:
+
+customers.customer_name
+previous_query.subscriptions
+
+Remember to use the following ON statement as part of your JOIN:
+ON previous_query.customer_id = customers.customer_id
+//
+WITH previous_query AS (
+   SELECT customer_id,
+      COUNT(subscription_id) AS 'subscriptions'
+   FROM orders
+   GROUP BY customer_id 
+)
+SELECT customers.customer_name, 
+   previous_query.subscriptions
+FROM previous_query
+JOIN customers
+  ON previous_query.customer_id = customers.customer_id;
+
+
+
+
 
