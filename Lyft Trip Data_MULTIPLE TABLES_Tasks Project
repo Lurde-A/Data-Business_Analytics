@@ -99,4 +99,19 @@ WHERE total_trips < 500;                            WHERE total_trips<500
                                                     WHERE total_trips<500;
 
 9.
+Calculate the number of cars that are active.
+
+//
+SELECT COUNT(*)
+FROM cars
+WHERE status = 'active';
+
+10.
+It’s safety recall time for cars that have been on the road for a while.
+Write a query that finds the two cars that have the highest trips_completed.
+
+//
+SELECT COUNT(*)
+FROM cars
+WHERE status = 'active';
 
