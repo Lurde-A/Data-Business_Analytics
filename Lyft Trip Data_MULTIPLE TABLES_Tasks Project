@@ -79,4 +79,18 @@ FROM riders2;
 7.
 What is the average cost for a trip?
 
+//
+SELECT ROUND(AVG(cost), 2)
+FROM trips;
+
+Answer: $31.92
+
+8.
+Lyft is looking to do an email campaign for all the irregular users.
+Find all the riders who have used Lyft less than 500 times!
+
+//
+SELECT *                    OR                      SELECT *
+FROM riders                                         FROM riders
+WHERE total_trips < 500;
 
